@@ -1,0 +1,23 @@
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>XesTic Xestion de recursos TIC Grupo ABN</title>
+
+        {% include 'bootstrap/css.html' %}
+
+        {% block html_head %}{% endblock %}      
+    </head>
+    <body>
+        {% include 'base/navbar.html' with brand_name='Ecommer' %}
+        
+        <div class='container'>
+            {% block body_content %}{% endblock %}
+        </div>
+        
+        
+        {%include 'bootstrap/js.html' %}
+    </body>
+</html>
