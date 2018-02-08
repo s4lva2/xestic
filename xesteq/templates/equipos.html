@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/dataTables.responsive.css"/>
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome-all.css' %}" rel="stylesheet">
 
 {% endblock %}
 
@@ -36,9 +37,7 @@
                         <tr>
                             <th class="text-center">ACCIONES</th>
                             <th class="text-center">ETIQUETA</th>
-                            <th class="text-center">MARCA</th>
-                            <th class="text-center">MODELO</th>                    
-                            <th class="text-center">SN</th>
+                            <th class="text-center">USUARIO</th>                            
                             <th class="text-center">S.O</th>
                             <th class="text-center">DEPARTAMENTO</th>
                             <th class="text-center">LOCALIZACION</th>
@@ -49,14 +48,13 @@
                         <tr>
                             <td class="text-center">                                
                                     <a onclick="return show_info('{{ equipo.brand }}','{{ equipo.model }}', 
-                                    '{{ equipo.so }}','{{ equipo.devuser }}','{{ equipo.ts_Create }}')" class="btn" >
-                                        ver
+                                    '{{ equipo.serialno }}','{{ equipo.mac }}','{{ equipo.sokey }}' ,
+                                    '{{ equipo.domain}}', '{{ equipo.ts_Create}}')" class="btn" >
+                                        <span title= "Ver Detalle" class="fas fa-eye fa-lg"></span>
                                     </a>
                             </td>
                             <td class="text-center">{{ equipo.devname }}</td>
-                            <td class="text-center">{{ equipo.brand }}</td>                    
-                            <td class="text-center">{{ equipo.model }}</td>
-                            <td class="text-center">{{ equipo.serialno }}</td>
+                            <td class="text-center">{{ equipo.devuser }}</td>                                              
                             <td class="text-center">{{ equipo.so }}</td>
                             <td class="text-center">{{ equipo.fk_depart }}</td>
                             <td class="text-center">{{ equipo.fk_localization }}</td>
@@ -72,6 +70,7 @@
 {% endblock %}
 
 {% block scripts %}    
+
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>   
     <script type="text/javascript" src="https:////cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.js"></script>  

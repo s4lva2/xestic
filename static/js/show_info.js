@@ -1,4 +1,4 @@
-function show_info(brand, model, so, devuser, ts_create)
+function show_info(brand, model, serialno, mac, sokey, domain, ts_create)
 {
     var info = $(".infoPanel");
     $(".removePanel").remove()
@@ -6,9 +6,11 @@ function show_info(brand, model, so, devuser, ts_create)
      <h6>DATOS DEL EQUIPO</h6>\
      <p><strong>Marca:</strong><br>" + brand + "</p>\
      <p><strong>Modelo:</strong><br>" + model + "</p>\
-     <p><strong>Sistema Operativo:</strong><br>" + so +"</p>\
-     <p><strong>Usuario:</strong><br>" + devuser +"</p>\
+     <p><strong>Nº de Serie:</strong><br>" + serialno +"</p>\
+     <p><strong>MAC:</strong><br>" + mac +"</p>\
+     <p><strong>Clave S.O:</strong><br>" + sokey +"</p>\
+     <p><strong>Dominio:</strong><br>" + domain +"</p>\
      <p><strong>Fecha de Alta:</strong><br>" + ts_create +"</p>\
      </div> ");  
-     console.log(ts_create);   
+     //console.log(ts_create);   
 }

@@ -4,7 +4,7 @@ $(document).ready(function() {
         "info":     false,    
         "paging":   true,  
         "language": {
-                url: "js/localizacion/es_ES.json",
+                url: "/static/js/localizacion/es_ES.json",
         }
     });
 } );
