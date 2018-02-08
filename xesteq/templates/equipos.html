@@ -1,0 +1,80 @@
+{% extends "base/base.html" %}
+
+{% load staticfiles %}
+
+{% block html_head%}
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/dataTables.responsive.css"/>
+
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="row">
+        <div class="col-12 rounded-left px-5" style="background-color:#f2f2f2;min-height:50px;">
+            Este div es una chapuzada para dejar espacio y ver como funciona el spacing px
+        </div>
+    </div>
+    <div class="row mt-3" >
+        <div class="col-12 rounded-left" style="background-color:#f2f2f2;">
+            <div class ="alert alert-secondary mt-3" role="alert">                
+            Esta es la fila para los filtros Nueva
+            </div>
+        </div>
+
+        <div class="col-2 rounded-left infoPanel" style="background-color:#1871a9; ">            
+            <div class="alert alert-primary mt-3" style="min-height:100px;">
+                 Equipos Registrados: {{ equipos.count }}          
+            </div>
+        </div>
+                
+        <div class="col-10 rounded-left ml-auto" style="border-color: #b8daff;background-color:#cce5ff;min-height:500px">
+                                   
+            <table id="tabla" class="table table-striped dt-responsive nowrap " cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ACCIONES</th>
+                            <th class="text-center">ETIQUETA</th>
+                            <th class="text-center">MARCA</th>
+                            <th class="text-center">MODELO</th>                    
+                            <th class="text-center">SN</th>
+                            <th class="text-center">S.O</th>
+                            <th class="text-center">DEPARTAMENTO</th>
+                            <th class="text-center">LOCALIZACION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for equipo in equipos %}
+                        <tr>
+                            <td class="text-center">                                
+                                    <a onclick="return show_info('{{ equipo.brand }}','{{ equipo.model }}', 
+                                    '{{ equipo.so }}','{{ equipo.devuser }}','{{ equipo.ts_Create }}')" class="btn" >
+                                        ver
+                                    </a>
+                            </td>
+                            <td class="text-center">{{ equipo.devname }}</td>
+                            <td class="text-center">{{ equipo.brand }}</td>                    
+                            <td class="text-center">{{ equipo.model }}</td>
+                            <td class="text-center">{{ equipo.serialno }}</td>
+                            <td class="text-center">{{ equipo.so }}</td>
+                            <td class="text-center">{{ equipo.fk_depart }}</td>
+                            <td class="text-center">{{ equipo.fk_localization }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>                
+            </table>
+                  
+        </div>
+        
+    </div>
+
+{% endblock %}
+
+{% block scripts %}    
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>   
+    <script type="text/javascript" src="https:////cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.js"></script>  
+    <script src="{% static 'js/datatable.js' %}"></script>
+    <script src="{% static 'js/show_info.js' %}"></script>
+{% endblock%}

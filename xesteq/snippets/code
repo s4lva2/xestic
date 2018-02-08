@@ -1,0 +1,11 @@
+<a onclick="return abrir_modal('{% url 'candidate-edit' equipo.pk %}','equipos / {{ equipo.nombre }} {{ equipo.apellido1 }}')" class="btn">
+                                    <span title= "Ver Detalle" class="glyphicon glyphicon-eye-open"></span>
+                                </a>
+                                <a onclick="return abrir_modal('{% url 'candidate-update' equipo.pk %}','equipos / {{ equipo.nombre }} {{ equipo.apellido1 }}')" class="btn">
+                                    <span title= "Actualizar equipo" class="glyphicon glyphicon-edit"></span>
+                                </a>
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.dataTables.min.css'  %}"/>
+<script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>

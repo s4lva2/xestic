@@ -15,7 +15,7 @@ class Location(models.Model):
     localization = models.CharField(max_length=30)
     
     def __str__(self):
-        return self.localizacion
+        return self.localization
         
             
 class Department(models.Model):
@@ -23,7 +23,7 @@ class Department(models.Model):
     department = models.CharField(max_length=30)     
 
     def __str__(self):
-        return self.area
+        return self.department
         
         
 class DeviceData(models.Model):
@@ -40,7 +40,7 @@ class DeviceData(models.Model):
     devuser = models.CharField(max_length=30, null=True)
     fk_localization =models.ForeignKey('Location')
     fk_depart = models.ForeignKey('Department')
-    ts_Create = models.DateTimeField(auto_now_add=True)
+    ts_Create = models.DateField(auto_now_add=True)
     
     def __str__(self):
         return self.brand

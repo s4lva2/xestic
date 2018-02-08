@@ -1,0 +1,72 @@
+{% extends "base/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}ABN Rh | Candidatos {% endblock %}
+
+{% block content %}
+<h3 class="text-center">Listado de Candidatos</h3>
+<div class="row">
+        <div class="col-lg-11 text-right">
+                <a onclick="return abrir_modal('{% url 'candidate-new' %}','Candidatos / Nuevo')" class="btn btn-primary">
+                        Nuevo
+                </a>
+        </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-lg-12">
+        <table id="tabla" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="text-center">ACCIONES</th>
+                    <th class="text-center">NOMBRE</th>
+                    <th class="text-center">APELLIDOS</th>                    
+                    <th class="text-center">E-MAIL</th>
+                    <th class="text-center">TELEFONO</th>
+                    <th class="text-center">CAT PROF</th>
+                    <th class="text-center">CV</th>
+                    <th class="text-center">NOTAS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candidato in candidatos %}
+                <tr>
+                    <td class="text-center">
+                        <a onclick="return abrir_modal('{% url 'candidate-edit' candidato.pk %}','Candidatos / {{ candidato.nombre }} {{ candidato.apellido1 }}')" class="btn">
+                            <span title= "Ver Detalle" class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <a onclick="return abrir_modal('{% url 'candidate-update' candidato.pk %}','Candidatos / {{ candidato.nombre }} {{ candidato.apellido1 }}')" class="btn">
+                            <span title= "Actualizar Candidato" class="glyphicon glyphicon-edit"></span>
+                        </a>
+                    </td>
+                    <td class="text-center">{{ candidato.nombre }}</td>
+                    <td class="text-center">{{ candidato.apellido1 }} {{ candidato.apellido2 }}</td>                    
+                    <td class="text-center">{{ candidato.email }}</td>
+                    <td class="text-center">{{ candidato.phone }}</td>
+                    <td class="text-center">{{ candidato.fk_categorias }}</td>
+                    <td class="text-center">
+                        <a href="/media/{{ candidato.documento }}"> <span title= "Ver CV" class="glyphicon glyphicon-eye-open"></span></a>
+                    </td>
+                    <td class="text-center">
+                        <a onclick="return abrir_modal('{% url 'nota-list' candidato.pk %}','Ver Notas / {{ candidato.nombre }} {{ candidato.apellido1 }}')" class="btn">
+                            <span title= "Ver Notas" class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <a onclick="return abrir_modal('{% url 'nota-new' candidato.pk %}','Crear Nota / {{ candidato.nombre }} {{ candidato.apellido1 }}')" class="btn">
+                            <span title= "Crear Nota"class="glyphicon glyphicon-edit"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="popup"></div>
+
+{% endblock  %}
+
+{% block scripts %}
+    <script src="{% static 'modal/modal.js' %}"></script>
+{% endblock %}

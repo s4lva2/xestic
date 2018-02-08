@@ -17,6 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from xesteq.views import  ListadoEquiposView, DetalleEquipoView
+
 urlpatterns = [
-    url(r'^$',TemplateView.as_view(template_name='base/index.html'), name='xesteq-index'),    
+    url(r'^$',ListadoEquiposView.as_view(), name='xesteq-index'),
+    #url(r'^equipos/detalle/(?P<pk>\d+)$', DetalleEquipo.as_view(), name='equipo-detail')
+    #url(r'^$',TemplateView.as_view(template_name='index.html'), name='xesteq-index'),    
 ]
